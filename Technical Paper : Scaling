@@ -1,0 +1,193 @@
+# Scaling: Load Balancers, Vertical Scaling & Horizontal Scaling
+
+## 1. Introduction
+
+Scaling is the process of increasing an application's capacity to handle more users, requests, and workloads without affecting its performance.
+
+When an application grows, the number of users and incoming requests also increases. A single server may not handle all requests efficiently, leading to slow response times, high CPU and memory usage, or server failures.
+
+To solve these problems, we can use different scaling techniques, such as:
+
+- Vertical Scaling (Scaling Up)
+- Horizontal Scaling (Scaling Out)
+- Load Balancing
+
+## 2. Vertical Scaling (Scaling Up)
+
+Vertical scaling means increasing an existing server's hardware resources to improve performance.
+
+We can increase:
+- RAM
+- CPU cores
+- Storage capacity
+- Processing power
+
+### Example
+
+Suppose an application is running on a server with:
+
+**Before Scaling:**
+- RAM: 4 GB
+- CPU: 2 Cores
+
+**After Scaling:**
+- RAM: 16 GB
+- CPU: 8 Cores
+
+We upgrade the existing server instead of adding another server.
+
+### Advantages
+- Easy to implement.
+- Requires fewer architectural changes.
+- Simple to manage because there is only one server.
+
+### Disadvantages
+- Hardware upgrades can be expensive.
+- A server has a maximum resource capacity.
+- A single server can become a single point of failure.
+
+## 3. Horizontal Scaling (Scaling Out)
+
+Horizontal scaling means adding more servers or machines to handle increasing application traffic.
+
+Instead of upgrading one server, we distribute the workload across multiple servers.
+
+### Example
+
+**Before Scaling:**
+- One server handles all incoming requests.
+
+**After Scaling:**
+- Server 1 handles some requests.
+- Server 2 handles some requests.
+- Server 3 handles some requests.
+
+Multiple servers work together to handle application traffic.
+
+### Advantages
+- Can handle a large number of users.
+- Capacity can be increased by adding more servers.
+- Provides better availability when combined with health checks and traffic distribution.
+- Individual servers can be replaced without necessarily stopping the entire application.
+
+### Disadvantages
+- More complex architecture.
+- Requires load balancing and server coordination.
+- Session management and data synchronisation can become challenging.
+
+## 4. What is a Load Balancer?
+
+A load balancer is a component that distributes incoming network traffic across multiple servers to prevent any single server from becoming overloaded.
+
+It helps improve:
+- Application performance
+- Availability
+- Reliability
+- Traffic distribution
+
+### How Does a Load Balancer Work?
+
+1. Users send requests to the application.
+2. The load balancer receives incoming requests.
+3. It checks the health and availability of servers.
+4. It forwards requests to selected healthy servers.
+5. The selected server processes the request and returns a response.
+
+### Example
+
+Suppose we have three application servers:
+
+- Server 1
+- Server 2
+- Server 3
+
+When users send requests, the load balancer distributes those requests among the available servers instead of sending all traffic to one server.
+
+## 5. Types of Load Balancing Algorithms
+
+### 1. Round Robin
+Requests are distributed sequentially across available servers.
+
+Example:
+- Request 1 → Server 1
+- Request 2 → Server 2
+- Request 3 → Server 3
+- Request 4 → Server 1
+
+### 2. Least Connections
+The load balancer sends a new request to the server with the fewest active connections.
+
+### 3. Weighted Round Robin
+Servers receive requests according to their assigned weights. Servers with higher capacity can receive more requests.
+
+### 4. IP Hash
+The client's IP address is used to determine which server receives the request. This can help keep a client directed to the same server.
+
+## 6. Types of Load Balancers
+
+### Layer 4 Load Balancer
+- Works at the Transport Layer.
+- Uses information such as IP addresses and TCP/UDP ports.
+- Does not need to inspect HTTP application content.
+
+### Layer 7 Load Balancer
+- Works at the Application Layer.
+- Understands HTTP/HTTPS requests.
+- Can route traffic based on URLs, headers, cookies, and other application-level information.
+
+### Examples of Load Balancing Technologies
+- NGINX
+- HAProxy
+- AWS Elastic Load Balancing
+- Google Cloud Load Balancing
+
+## 7. Vertical Scaling vs Horizontal Scaling
+
+| Feature | Vertical Scaling | Horizontal Scaling |
+|---|---|---|
+| Meaning | Upgrade an existing server | Add more servers |
+| Also Known As | Scaling Up | Scaling Out |
+| Hardware | More powerful machine | Multiple machines |
+| Complexity | Relatively simple | More complex |
+| Capacity | Limited by hardware | Can grow by adding servers |
+| Availability | Single-server failure risk | Can provide better fault tolerance |
+| Cost | Can become expensive | Depends on infrastructure and traffic |
+
+## 8. Real-World Project Scenario
+
+Consider an e-commerce application that initially handles 500 users.
+
+As the business grows, 50,000 users start accessing the application simultaneously.
+
+The application starts experiencing:
+- High CPU utilisation.
+- Increased memory usage.
+- Slow response times.
+- Request timeouts.
+- Server failures.
+
+### Possible Solution
+
+1. Monitor server performance, CPU, RAM, and response times.
+2. Use vertical scaling if the existing server needs additional resources.
+3. Introduce horizontal scaling by adding multiple application servers.
+4. Configure a load balancer to distribute incoming traffic.
+5. Implement health checks to detect unhealthy servers.
+6. Monitor application performance and adjust the number of servers according to demand.
+
+## 9. Conclusion
+
+Scaling is essential for maintaining application performance as the number of users and requests increases.
+
+- Vertical scaling improves the capacity of an existing server.
+- Horizontal scaling increases capacity by adding more servers.
+- Load balancing distributes incoming traffic across multiple servers.
+
+For applications with continuously growing traffic, horizontal scaling combined with load balancing can provide better scalability, availability, and reliability.
+
+## 10. References
+
+- [NGINX Documentation](https://docs.nginx.com/)
+- [AWS Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/)
+- [Google Cloud Load Balancing](https://cloud.google.com/load-balancing/docs)
+- [HAProxy Documentation](https://www.haproxy.com/documentation/)
