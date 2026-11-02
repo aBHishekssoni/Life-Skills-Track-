@@ -1,6 +1,6 @@
 # Scaling: Load Balancers, Vertical Scaling & Horizontal Scaling
 
-## 1. Introduction
+## 1. Introduction 
 
 Scaling is the process of increasing an application's capacity to handle more users, requests, and workloads without affecting its performance.
 
@@ -62,16 +62,16 @@ Instead of upgrading one server, we distribute the workload across multiple serv
 - Server 2 handles some requests.
 - Server 3 handles some requests.
 
-Multiple servers work together to handle application traffic.
+Multiple servers work together to handle application traffic. Rather than a single server 
 
 ### Advantages
-- Can handle a large number of users.
+- Can handle a large number of users without a point of failure.
 - Capacity can be increased by adding more servers.
 - Provides better availability when combined with health checks and traffic distribution.
 - Individual servers can be replaced without necessarily stopping the entire application.
 
 ### Disadvantages
-- More complex architecture.
+- More complex architecture for beginners.
 - Requires load balancing and server coordination.
 - Session management and data synchronisation can become challenging.
 
@@ -107,12 +107,6 @@ When users send requests, the load balancer distributes those requests among the
 
 ### 1. Round Robin
 Requests are distributed sequentially across available servers.
-
-Example:
-- Request 1 → Server 1
-- Request 2 → Server 2
-- Request 3 → Server 3
-- Request 4 → Server 1
 
 ### 2. Least Connections
 The load balancer sends a new request to the server with the fewest active connections.
@@ -177,7 +171,7 @@ The application starts experiencing:
 
 ## 9. Conclusion
 
-Scaling is essential for maintaining application performance as the number of users and requests increases.
+Scaling is important for maintaining application performance as the number of users and requests increases.
 
 - Vertical scaling improves the capacity of an existing server.
 - Horizontal scaling increases capacity by adding more servers.
